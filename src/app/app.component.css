@@ -1,0 +1,23 @@
+
+div {
+  margin-top: auto;
+}
+input {
+  margin-bottom: 10px;
+}
+div div {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.short {
+  background-color: red;
+}
+.medium {
+  background-color: yellow;
+}
+.strong {
+  background-color: green;
+}
+

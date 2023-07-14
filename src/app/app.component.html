@@ -1,0 +1,11 @@
+
+<div>
+  <label for="password">Введіть пароль: </label>
+  <input type="password" id="password" [(ngModel)]="password" (input)="checkStrengthPassword()">
+</div>
+
+<div>
+  <div [style.background-color]="passwordColorStrength(0)"></div>
+  <div [style.background-color]="passwordColorStrength(1)"></div>
+  <div [style.background-color]="passwordColorStrength(2)"></div>
+</div>
