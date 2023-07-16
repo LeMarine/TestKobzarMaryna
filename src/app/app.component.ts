@@ -1,5 +1,17 @@
 import { Component } from '@angular/core';
+enum PASSWORD_STRENGTH {
+  EMPTY = '',
+  EASY = 'easy',
+  MEDIUM = 'medium',
+  STRONG = 'strong'
+}
 
+enum COLOR_STRENGTHS {
+  GRAY = 'gray',
+  RED = 'red',
+  YELLOW = 'yellow',
+  GREEN = 'green'
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,30 +28,30 @@ export class AppComponent {
     let hasSymbols = /[@#$%^&*()!]/.test(this.password);
 
     if (length === 0) {
-      this.passwordStrength = '';
-    } else if (length < 8) {
-      this.passwordStrength = 'short';
-    } else if ((hasLetters && hasNumber) || (hasLetters && hasSymbols) || (hasNumber && hasSymbols)) {
-      this.passwordStrength = 'medium';
+      this.passwordStrength = PASSWORD_STRENGTH.EMPTY;
     } else if (hasLetters && hasNumber && hasSymbols) {
-      this.passwordStrength = 'strong';
+      this.passwordStrength = PASSWORD_STRENGTH.STRONG;
+    } else if ((hasLetters && hasNumber) || (hasLetters && hasSymbols) || (hasNumber && hasSymbols)) {
+      this.passwordStrength = PASSWORD_STRENGTH.MEDIUM;
+    } else {
+      this.passwordStrength = PASSWORD_STRENGTH.EASY;
     }
   }
 
   passwordColorStrength(index: number) {
     if (this.password.length === 0) {
-      return 'gray';
+      return COLOR_STRENGTHS.GRAY;
     } else if (this.password.length < 8) {
-      return 'red';
+      return COLOR_STRENGTHS.RED;
     } else {
-      if (index === 0 && this.passwordStrength === 'short') {
-        return 'red';
-      } else if ((index === 0 || index === 1) && this.passwordStrength === 'medium') {
-        return 'yellow';
-      } else if (index === 2 && this.passwordStrength === 'strong') {
-        return 'green';
+      if (index === 0 && this.passwordStrength === PASSWORD_STRENGTH.EASY) {
+        return COLOR_STRENGTHS.RED;
+      } else if ((index === 0 || index === 1) && this.passwordStrength === PASSWORD_STRENGTH.MEDIUM) {
+        return COLOR_STRENGTHS.YELLOW;
+      } else if (this.passwordStrength === PASSWORD_STRENGTH.STRONG) {
+        return COLOR_STRENGTHS.GREEN;
       } else {
-        return 'gray';
+        return COLOR_STRENGTHS.GRAY;
       }
     }
   }

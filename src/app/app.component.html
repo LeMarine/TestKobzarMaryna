@@ -1,11 +1,14 @@
+<div class="wrapper">
+  <div class="password">
+    <div class="password-form">
+      <label class="password__label" for="password">Password</label>
+      <input class="password__input" type="password" id="password" [(ngModel)]="password" (input)="checkStrengthPassword()">
+    </div>
 
-<div>
-  <label for="password">Введіть пароль: </label>
-  <input type="password" id="password" [(ngModel)]="password" (input)="checkStrengthPassword()">
-</div>
-
-<div>
-  <div [style.background-color]="passwordColorStrength(0)"></div>
-  <div [style.background-color]="passwordColorStrength(1)"></div>
-  <div [style.background-color]="passwordColorStrength(2)"></div>
+    <div class="password-strength">
+      <div class="password-strength--block" [style.background-color]="passwordColorStrength(0)"></div>
+      <div class="password-strength--block" [style.background-color]="passwordColorStrength(1)"></div>
+      <div class="password-strength--block" [style.background-color]="passwordColorStrength(2)"></div>
+    </div>
+  </div>
 </div>
