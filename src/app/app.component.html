@@ -1,14 +1,10 @@
 <div class="wrapper">
   <div class="password">
-    <div class="password-form">
-      <label class="password__label" for="password">Password</label>
-      <input class="password__input" type="password" id="password" [(ngModel)]="password" (input)="checkStrengthPassword()">
-    </div>
-
-    <div class="password-strength">
-      <div class="password-strength--block" [style.background-color]="passwordColorStrength(0)"></div>
-      <div class="password-strength--block" [style.background-color]="passwordColorStrength(1)"></div>
-      <div class="password-strength--block" [style.background-color]="passwordColorStrength(2)"></div>
-    </div>
+    <form [formGroup]="form">
+      <app-password
+        formControlName="password"
+        [passwordStrength]="passwordStrength"
+      ></app-password>
+    </form>
   </div>
 </div>
